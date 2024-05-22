@@ -9,6 +9,7 @@
         margin: 0;
         padding: 0;
         font-family: monospace;
+        height: 100vh;
       }
       .header_menu {
         display: flex;
@@ -50,33 +51,7 @@
         border-radius: 8px;
         width: 130px;
       }
-      .btn-container {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        font-size: 1rem;
-        align-items: center;
-      }
-      .znack-btn {
-        color: white;
-        font-weight: bold;
-        text-align: center;
-        padding: 8px;
-        border-radius: 8px;
-        background-color: rgb(215, 149, 122);
-        cursor: pointer;
-        height: 40px;
-        width: 40px;
-        border: 0;
-        outline: 0;
-        font-size: 1rem;
-      }
-      .znack-btn:focus {
-        outline:none!important;
-      }
-      .znack-btn:hover {
-        background-color: rgb(194, 125, 98);
-      }
+      
       .card-basket .count {
         padding: 8px;
         font-weight: bold;

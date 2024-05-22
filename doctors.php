@@ -11,5 +11,6 @@ require_once "api/functions.php";
 <body>
     <?showHeader();?>
     <?showDoctors($conn);?>
+    <?//showFooter();?>
 </body>
 </html>

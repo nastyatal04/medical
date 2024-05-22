@@ -23,7 +23,7 @@
       <div  class="btn-container">
           <?echo "<input type='hidden' name='id_inp' value=".$id.">";?>
       </div>
-      <input type='submit' value='Удалить товар' name='del_prd_btn' class="negativ_btn">
+      <!-- <input type='submit' value='Удалить товар' name='del_prd_btn' class="negativ_btn"> -->
     </div>    
   </form>
 </body>
