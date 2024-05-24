@@ -45,30 +45,43 @@ function calcExperience($experience) {
     }
 }
 
-function showServices ($conn) {
-    $sql = 
-    "SELECT `id`, doctors.doc_id, `fullname`, `specialization`, `experience`, `img`, services.serv_id, `name_serv` FROM `doc_serv` 
-    INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id 
-    INNER JOIN `services` ON doc_serv.serv_id = services.serv_id"; 
-
-    // "SELECT `id`,`fullname`, doc_serv.serv_id FROM `doc_serv` 
-    // INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id 
-    // WHERE doc_serv.serv_id = 1"
-
-    
-    // spl php разбить результат запроса на массив
-    //$row_array = array_merge($row_array, ibase_fetch_row($result));
+function showServices($conn) {
+    $sql = "SELECT * FROM `services`";
     if($result = $conn->query($sql)){
         while($row = $result->fetch_array()){
-            $serv_id = $row['services.serv_id'];
-            $name_serv = $row['name_serv'];
-            // $specialization = $row['specialization'];
-            // $experience = $row['experience'];
-            // $description = $row['description'];
-            // $img = $row['img'];
-            require 'components/min_doc_card.php';
+            $title = $row['name_serv'];
+            require 'components/min_title.php';
+            echo "<div class='desc_serv'>".$row['description']."</div>";
+            echo "<div class='doc_wrapper'>";
+            showDocServices ($conn, $title);
+            echo "</div>";
         }
     }
 }
 
+function showDocServices ($conn, $serv) {
+    $sql = 
+    "SELECT `id`, doctors.doc_id, `fullname`, `specialization`, `experience`, `img`, services.serv_id, `name_serv` FROM `doc_serv` 
+    INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id 
+    INNER JOIN `services` ON doc_serv.serv_id = services.serv_id
+    WHERE `name_serv` = '".$serv."';"; 
+
+    if($result = $conn->query($sql)){
+        while($row = $result->fetch_array()){
+            $serv_id = $row['services.serv_id'];
+            $name_serv = $row['name_serv'];
+            $id = $row['doctors.doc_id'];
+            $name = $row['fullname'];
+            $specialization = $row['specialization'];
+            $experience = $row['experience'];
+            $img = $row['img'];
+
+            $specialization = $row['specialization'];
+            $experience = $row['experience'];
+            $description = $row['description'];
+            $img = $row['img'];
+            require 'components/min_doc_card.php';
+        }
+    }
+}
 ?>

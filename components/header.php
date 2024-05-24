@@ -95,6 +95,15 @@
       .negativ_btn:hover {
         background-color: rgb(255, 244, 240);
       }
+      .desc_serv {
+        margin: 8px 32px;
+      }
+      .doc_wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        margin: 8px 32px;
+      }
     </style>
   </head>
   <body>
@@ -106,6 +115,7 @@
         <a href="stock.php" class="header_btn">Акции</a>      
         <a href="contacts.php" class="header_btn">Контакты</a>  
       </p>
+      <!-- 6808 -->
     </div>
   </body>
 </html>
