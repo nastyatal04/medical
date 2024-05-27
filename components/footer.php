@@ -5,9 +5,9 @@
     <title>Document</title>
     <style>
         .footer {
-            position:fixed;
+            /* position:fixed;
    left:0px;
-   bottom:0px;
+   bottom:0px; */
             width:100%;
             background-color: rgb(176, 196, 233);
             display: flex;

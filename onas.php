@@ -10,8 +10,10 @@ require_once "api/functions.php";
 </head>
 <body>
     <?showHeader();?>
-    <?showTitle("Услуги нашей клиники");?>
-    <?showServices($conn);?>
+    <div class="wrapper">
+        <?showTitle("Услуги нашей клиники");?>
+        <?showServices($conn);?>
+    </div>
     <?//showFooter();?>
 </body>
 </html>

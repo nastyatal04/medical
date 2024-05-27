@@ -84,4 +84,42 @@ function showDocServices ($conn, $serv) {
         }
     }
 }
+
+function getServ($conn) {
+    $sql = "SELECT `serv_id`, `name_serv` FROM `services`";
+    if($result = $conn->query($sql)){
+        echo "<label for='serv_select'>Услуги</label>";
+        echo "<select name='services' id='serv_select'>";
+        echo "<option value=''>-- Выберите услугу --</option>";
+        while($row = $result->fetch_array()){
+            echo "<option value=".$row['serv_id'].">".$row['name_serv']."</option>";
+        }
+        echo "</select>";
+    }
+}
+
+function getDoc($conn, $serv = "") {
+    $sql = 
+    "SELECT doctors.doc_id, `fullname` FROM `doc_serv` 
+    INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id
+    WHERE `serv_id` = '".$serv."';"; 
+
+    if($result = $conn->query($sql)){
+        echo "<label for='doc_select'>Врачи</label>";
+        echo "<select name='doctors' id='doc_select'>";
+        echo "<option value=''>-- Выберите врача --</option>";
+        while($row = $result->fetch_array()){
+            echo "<option value=".$row['doc_id'].">".$row['fullname']."</option>";
+        }
+        echo "</select>";
+    }
+}
 ?>
+
+<!-- 
+        Есть два выпадающих списка:
+    1) Услуги (содержит все услуги, которые предоставляет клиника)
+    2) Врачи (содержит врачей, выполняющих выбранную в списке "Услуги" услугу)
+        По умолчанию в обоих списках выбрано поле "-- Выберите услугу --" и "-- Выберите врача --" соответственно
+        Если в списке "Услуги" выбрано поле не по умолчанию (т.е. выбрана какая-то услуга), то в список "Врачи" подгружается врачи, оказывающие именно выбранную услугу   
+-->

@@ -10,7 +10,9 @@ require_once "api/functions.php";
 </head>
 <body>
     <?showHeader();?>
-    <?showDoctors($conn);?>
+    <div class="wrapper">
+        <?showDoctors($conn);?>
+    </div>
     <?//showFooter();?>
 </body>
 </html>

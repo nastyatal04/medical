@@ -104,6 +104,12 @@
         gap: 8px;
         margin: 8px 32px;
       }
+      .wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
     </style>
   </head>
   <body>

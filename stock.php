@@ -10,6 +10,7 @@ require_once "api/functions.php";
 </head>
 <body>
     <?showHeader();?>
+    <div class="wrapper"></div>
     <?showFooter();?>
 </body>
 </html>
