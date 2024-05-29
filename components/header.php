@@ -9,7 +9,7 @@
         margin: 0;
         padding: 0;
         font-family: monospace;
-        height: 100vh;
+        height: 100%;
       }
       .header_menu {
         display: flex;
@@ -34,67 +34,8 @@
       .header_btn:hover {
         background-color: rgb(194, 125, 98);
       }
-      .card-basket {
-        display: flex;
-        flex-direction: row;
-        gap: 24px;
-        padding: 16px;
-        border-radius: 8px;
-        width: 50%;
-        font-size: 1rem;
-        border: 1px solid rgb(171, 183, 219);
-        border-radius: 8px;
-      }
-      .card-basket img {
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        border-radius: 8px;
-        width: 130px;
-      }
+      /*  //////////////// */
       
-      .card-basket .count {
-        padding: 8px;
-        font-weight: bold;
-      }
-      .card-basket .name {
-        font-weight: bold;
-        color: rgb(145, 85, 60);
-      }
-      .card-basket .price {
-        font-weight: bold;
-        margin: 0 16px;
-      }
-      .info-basket {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        align-items: center;
-      }
-      .btn_wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-      }
-      .negativ_btn {
-        color: rgb(215, 149, 122);
-        font-weight: bold;
-        text-align: center;
-        padding: 8px;
-        border-radius: 8px;
-        background-color: white;
-        cursor: pointer;        
-        width: max-content;
-        border: 0;
-        outline: 0;
-        font-size: 1rem;
-      }      
-      .negativ_btn:focus {
-        outline:none!important;
-      }
-      .negativ_btn:hover {
-        background-color: rgb(255, 244, 240);
-      }
       .desc_serv {
         margin: 8px 32px;
       }
@@ -109,6 +50,9 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+      }
+      .content {
+        flex: 1 0 auto;
       }
     </style>
   </head>

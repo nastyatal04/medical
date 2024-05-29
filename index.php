@@ -18,16 +18,19 @@ require_once "api/functions.php";
 <body>
     <?showHeader();?>
     <div class="wrapper">
-    <form action="" method="post" class="form">
-        <?
-           getServ($conn);
-           getDoc($conn);
-        ?>
-        <label for="" class="form_label">Имя<input type="text" name="login"   class="inputs"></label>
-        <label for="" class="form_label">Телефон<input type="text" name="password"  class="inputs"></label>
-        <input type="submit" value="Записаться" name="atr_btn" class="atr_btn">        
-    </form>
-    </div>
-    <?showFooter();?>
+        <div class="content">
+            <form action="" method="post" class="form">
+                <?
+                    getServ($conn);
+                    getDoc($conn);
+                ?>
+                <label for="" class="form_label">Имя<input type="text" name="login"   class="inputs"></label>
+                <label for="" class="form_label">Телефон<input type="text" name="password"  class="inputs"></label>
+                <input type="submit" value="Записаться" name="atr_btn" class="atr_btn">        
+            </form>
+            </div>
+            <?showFooter();?>
+        </div>
 </body>
+<script src="api/script.php"></script>
 </html>

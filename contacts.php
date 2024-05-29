@@ -45,46 +45,48 @@ require_once "api/functions.php";
 <body>
     <?showHeader();?>
     <div class="wrapper">
-        <div class="card_conn">
-            <img class="img_conn" src="img/content/1.jpg" alt="">
-            <div class="info_conn">
-                <div class = "paragraph">
-                    <?
-                        $title = "Адрес:";
-                        require 'components/min_title.php';
-                    ?>
-                    <span>г.Тверь, пр-т Победы, д. 34</span>
-                </div>
-                <div class = "paragraph">
-                    <?
-                        $title = "Телефоны:";
-                        require 'components/min_title.php';
-                    ?>
-                    <span>8 (4822) 32-53-54</span>
-                    <span>8 (963) 220 53 54</span>
-                </div>
-                <div class = "paragraph">
-                    <?
-                        $title = "Email:";
-                        require 'components/min_title.php';
-                    ?>
-                    <span>sk-smile@mail.ru</span>
-                </div>
-                <div class = "paragraph">
-                    <?
-                        $title = "Время работы:";
-                        require 'components/min_title.php';
-                    ?>
-                    <span>Пн-пт: 9:00 - 19:00</span>
-                    <span>Сб: 09:00 - 15:00</span>
-                    <span>Вс: выходной</span>
+        <div class="content">
+            <div class="card_conn">
+                <img class="img_conn" src="img/content/1.jpg" alt="">
+                <div class="info_conn">
+                    <div class = "paragraph">
+                        <?
+                            $title = "Адрес:";
+                            require 'components/min_title.php';
+                        ?>
+                        <span>г.Тверь, пр-т Победы, д. 34</span>
+                    </div>
+                    <div class = "paragraph">
+                        <?
+                            $title = "Телефоны:";
+                            require 'components/min_title.php';
+                        ?>
+                        <span>8 (4822) 32-53-54</span>
+                        <span>8 (963) 220 53 54</span>
+                    </div>
+                    <div class = "paragraph">
+                        <?
+                            $title = "Email:";
+                            require 'components/min_title.php';
+                        ?>
+                        <span>sk-smile@mail.ru</span>
+                    </div>
+                    <div class = "paragraph">
+                        <?
+                            $title = "Время работы:";
+                            require 'components/min_title.php';
+                        ?>
+                        <span>Пн-пт: 9:00 - 19:00</span>
+                        <span>Сб: 09:00 - 15:00</span>
+                        <span>Вс: выходной</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="map" style="position:relative;overflow:hidden;">           
+            <div class="map" style="position:relative;overflow:hidden;">           
             <iframe src="https://yandex.ru/map-widget/v1/org/sonet/1693950851/?ll=35.898988%2C56.842167&z=13" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
         </div>
+        </div>
+        <?showFooter();?>
     </div>
-    <?showFooter();?>
 </body>
 </html>

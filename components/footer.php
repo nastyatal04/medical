@@ -5,15 +5,11 @@
     <title>Document</title>
     <style>
         .footer {
-            /* position:fixed;
-   left:0px;
-   bottom:0px; */
+            flex: 0 0 auto;
             width:100%;
-            background-color: rgb(176, 196, 233);
+            background-color: rgb(230, 194, 179);
             display: flex;
-            flex-direction: row;
             justify-content: space-evenly;
-
         }
     </style>
 </head>
