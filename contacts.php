@@ -14,6 +14,7 @@ require_once "api/functions.php";
             justify-content: center;
             align-items: center;
             margin: 16px;
+            padding: 0 0 16px 0;
         }
         .img_conn {
             width: 350px;
@@ -30,9 +31,9 @@ require_once "api/functions.php";
         }
         .info_conn {
             width: 350px;
-            padding: 0 0 16px 0;
             background-color: rgb(250, 230, 222);
             border-radius: 0 16px 16px 0;
+            height: max-content;
         }
         .map {
             width: 100%;

@@ -11,6 +11,7 @@
             align-items: center;
             margin: 16px;
             height: 250px;
+            font-size: 1rem;
         }
         .img_conn {
             width: 350px;

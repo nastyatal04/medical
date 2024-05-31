@@ -1,27 +1,49 @@
-// Получаем ссылку на выпадающий список услуг
-const servicesSelect = document.getElementById("services");
+const dynamicSelect = (id1, id2) => {
+  // Определение переменных, ссылающихся на списки
+  const sel1 = document.getElementById(id1);
+  const sel2 = document.getElementById(id2);
+  // Клонирование динамического списка
+  const clone = sel2.cloneNode(true);
+  // Определение переменных для клонированных элементов списка
+  const clonedOptions = clone.getElementsByTagName("option");
+  // Вызов функции собирающей вызываемый список
+  refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
+  // При изменении выбранного элемента в первом списке: // вызов функции пересобирающей вызываемый список
+  sel1.addEventListener("change", () => {
+    refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
+  });
+  console.log("ddd");
+};
 
-// Добавляем обработчик события на изменение выбора услуги
-servicesSelect.addEventListener("change", function () {
-  // Получаем выбранное значение услуги
-  const selectedService = this.value;
+// Функция для сборки динамического списка
+const refreshDynamicSelectOptions = (sel1, sel2, clonedOptions) => {
+  // Удаление всех элементов динамического списка
+  while (sel2.options.length) {
+    sel2.remove(0);
+  }
+  const selectedOption = sel1.options[sel1.selectedIndex].value;
+  // Перебор клонированных элементов списка
+  for (let i = 0; i < clonedOptions.length; i++) {
+    const option = clonedOptions[i];
+    // Если название класса клонированного option эквивалентно "select"
+    // либо эквивалентно значению option первого списка
+    if (
+      option.classList.contains("select") ||
+      option.classList.contains(selectedOption)
+    ) {
+      // его нужно клонировать в динамически создаваемый список
+      sel2.appendChild(option.cloneNode(true));
+    }
+  }
+  // Отправляем событие change выбранного select
+  //const event = document.createEvent("HTMLEvents");
+  const event = new Event("change", { bubbles: true, cancelable: false });
+  sel2.dispatchEvent(event);
+};
 
-  // Отправляем AJAX-запрос на сервер для получения списка врачей
-  fetch(`get\_doctors.php?service=${selectedService}`)
-    .then((response) => response.json())
-    .then((data) => {
-      // Обновляем список врачей в выпадающем списке
-      const doctorsSelect = document.getElementById("doctors");
-      doctorsSelect.innerHTML =
-        '<option value="">-- Выберите врача --</option>';
-      data.forEach((doctor) => {
-        const option = document.createElement("option");
-        option.value = doctor.id;
-        option.textContent = doctor.name;
-        doctorsSelect.appendChild(option);
-      });
-    })
-    .catch((error) => {
-      console.error("Ошибка при загрузке списка врачей:", error);
-    });
+// Вызов скрипта при загрузке страницы
+document.addEventListener("DOMContentLoaded", () => {
+  dynamicSelect("services", "doc_select");
 });
+
+//https://xhtml.ru/2020/null/dynamic-select-example/

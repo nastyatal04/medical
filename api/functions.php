@@ -88,30 +88,29 @@ function showDocServices ($conn, $serv) {
 function getServ($conn) {
     $sql = "SELECT `serv_id`, `name_serv` FROM `services`";
     if($result = $conn->query($sql)){
-        echo "<label for='services'>Услуги</label>";
+        echo "<label for='services' class='form_label'>Услуги";
         echo "<select name='services' id='services'>";
-        echo "<option value=''>-- Выберите услугу --</option>";
+        echo "<option class='select' value='select'>-- Выберите услугу --</option>";
         while($row = $result->fetch_array()){
             echo "<option value=".$row['serv_id'].">".$row['name_serv']."</option>";
         }
-        echo "</select>";
+        echo "</select></label>";
     }
 }
 
 function getDoc($conn, $serv = "") {
     $sql = 
-    "SELECT doctors.doc_id, `fullname` FROM `doc_serv` 
-    INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id
-    WHERE `serv_id` = '".$serv."';"; 
+    "SELECT doctors.doc_id, `fullname`, `serv_id` FROM `doc_serv` 
+    INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id;"; 
 
     if($result = $conn->query($sql)){
-        echo "<label for='doc_select'>Врачи</label>";
-        echo "<select name='doctors' id='doc_select'>";
-        echo "<option value=''>-- Выберите врача --</option>";
+        echo "<label for='doc_select' class='form_label'>Врачи";
+        echo "<select name='doc_select' id='doc_select'>";
+        echo "<option class='select' value='select'>-- Выберите врача --</option>";
         while($row = $result->fetch_array()){
-            echo "<option value=".$row['doc_id'].">".$row['fullname']."</option>";
+            echo "<option class=".$row['serv_id']." value=".$row['doctors.doc_id'].">".$row['fullname']."</option>";
         }
-        echo "</select>";
+        echo "</select></label>";
     }
 }
 ?>
