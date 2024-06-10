@@ -60,7 +60,7 @@ require_once "api/functions.php";
             <?showFooter();?>
         </div>
 </body>
-<script src="api/script.js"></script>
+<script src="api/scropt.js"></script>
 </html>
 
 <!-- https://samozapis-spb.ru/specialnosti/stomatolog -->
