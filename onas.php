@@ -16,7 +16,6 @@ require_once "api/functions.php";
             <?showServices($conn);?>
         </div>
         <?showFooter();?>
-    </div>
-        
+    </div> 
 </body>
 </html>

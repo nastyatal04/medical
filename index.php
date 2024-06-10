@@ -26,6 +26,9 @@ require_once "api/functions.php";
             flex-direction: column;
             gap: 4px;
         }
+        .form .mintitle {
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -39,53 +42,21 @@ require_once "api/functions.php";
                     getServ($conn);
                     getDoc($conn);
                 ?>
-                <label for="" class="form_label">Имя<input type="text" name="login"   class="inputs"></label>
-                <label for="" class="form_label">Телефон<input type="text" name="password"  class="inputs"></label>
-                <input type="date" name="calendar">
-
-                <p>Время создания публикации</p>
-                <input type="time" name="cron" value="03:15" step="1800">
-
-                <label for="appt-time">Choose an appointment time: </label>
-                <input id="appt-time" list="times" type="time" name="appt-time" value="08:00">
-                <datalist id="times">
-                    <option value="08:00:00">
-                    <option value="08:15:00">
-                    <option value="08:30:00">
-                    <option value="09:00:00">
-                    <option value="09:15:00">
-                    <option value="09:30:00">
-                    <option value="10:00:00">
-                    <option value="10:15:00">
-                    <option value="10:30:00">
-                    <option value="11:00:00">
-                    <option value="11:15:00">
-                    <option value="11:30:00">
-                    <option value="12:00:00">
-                    <option value="12:15:00">
-                    <option value="12:30:00">
-                    <option value="13:00:00">
-                    <option value="13:15:00">
-                    <option value="13:30:00">
-                    <option value="14:00:00">
-                    <option value="14:15:00">
-                    <option value="14:30:00">
-                    <option value="15:00:00">
-                    <option value="15:15:00">
-                    <option value="15:30:00">
-                    <option value="16:00:00">
-                    <option value="16:15:00">
-                    <option value="16:30:00">
-                    <option value="17:00:00">
-                    <option value="17:15:00">
-                    <option value="17:30:00">
-                    <option value="18:00:00">
-                    <option value="18:15:00">
-                    <option value="18:30:00">
-                </datalist>
+                <label for="fullname" class="form_label">Имя<input type="text" id="fullname" name="fullname" class="inputs"></label>
+                <label for="phone" class="form_label">Телефон<input type="text" id="phone" name="phone" class="inputs"></label>
+                <label for="recording_date">
+                Дата
+                <?
+                $date = new DateTime();
+                $date->add(new DateInterval('P14D'));
+                    echo "<input type='date' id='recording_date' name='recording_date' value='".date("Y-m-d")."' max='".$date->format('Y-m-d')."' min='".date("Y-m-d")."'> "
+                ?>
+                </label>       
+                <?getTime($conn) ?>        
                 <input type="submit" value="Записаться" name="atr_btn" class="atr_btn">        
             </form>
             </div>
+            <!-- дОБАВИТЬ НА ТЕЛЕФОН МАСКУ ВВОДА!!!!!!!! -->
             <?showFooter();?>
         </div>
 </body>

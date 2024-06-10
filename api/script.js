@@ -12,7 +12,6 @@ const dynamicSelect = (id1, id2) => {
   sel1.addEventListener("change", () => {
     refreshDynamicSelectOptions(sel1, sel2, clonedOptions);
   });
-  console.log("ddd");
 };
 
 // Функция для сборки динамического списка
@@ -36,14 +35,28 @@ const refreshDynamicSelectOptions = (sel1, sel2, clonedOptions) => {
     }
   }
   // Отправляем событие change выбранного select
-  //const event = document.createEvent("HTMLEvents");
   const event = new Event("change", { bubbles: true, cancelable: false });
   sel2.dispatchEvent(event);
 };
 
 // Вызов скрипта при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("врач выбранннннннннннннннн");
+  // Заполняем списки услуг и докторов
   dynamicSelect("services", "doc_select");
+
+  // Проверяем, выбран ли доктор
+  // Обращаемся к списку докторов
+  const doc_select = document.getElementById("doc_select");
+  // Если название класса выбранного значения из списка врачей эквивалентно "select",
+  // то значит врач не выбран
+  const selectedValue = select.value.classList.contains("select");
+  //
+  if (!selectedValue) {
+    console.log("врач выбран");
+  } else {
+    console.log("врач не выбран");
+  }
 });
 
 //https://xhtml.ru/2020/null/dynamic-select-example/

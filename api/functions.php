@@ -98,7 +98,7 @@ function getServ($conn) {
     }
 }
 
-function getDoc($conn, $serv = "") {
+function getDoc($conn) {
     $sql = 
     "SELECT doctors.doc_id, `fullname`, `serv_id` FROM `doc_serv` 
     INNER JOIN `doctors` ON doc_serv.doc_id = doctors.doc_id;"; 
@@ -113,4 +113,20 @@ function getDoc($conn, $serv = "") {
         echo "</select></label>";
     }
 }
+
+function getTime($conn) {
+    $sql = 
+    "SELECT `id`, `doc_id`, `date`, `time` FROM `date_time` WHERE `busy` <> 1;"; 
+
+    if($result = $conn->query($sql)){
+        echo "<label for='time_select' class='form_label'>Время записи";
+        echo "<select name='time_select' id='time_select'>";
+        echo "<option class='select' value='select'>-- Выберите время --</option>";
+        while($row = $result->fetch_array()){
+            echo "<option class=".$row['doc_id']." value=".$row['id'].">".$row['time']."</option>";
+        }
+        echo "</select></label>";
+    }
+}
+
 ?>
