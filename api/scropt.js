@@ -41,25 +41,7 @@ const refreshDynamicSelectOptions = (sel1, sel2, clonedOptions) => {
 
 // Вызов скрипта при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("врач выбранннннннннннннннн");
   // Заполняем списки услуг и докторов
   dynamicSelect("services", "doc_select");
-
-  // Проверяем, выбран ли доктор
-  // Обращаемся к списку докторов
-  const select = document.getElementById("doc_select");
-  // Если название класса выбранного значения из списка врачей эквивалентно "select",
-  // то значит врач не выбран
-  const sV = select.value;
-  if (sV != "select") {
-    console.log(sV);
-  }
-  //
-  //   if (!sV) {
-  //     console.log("врач выбран");
-  //   } else {
-  //     console.log("врач не выбран");
-  //   }
+  dynamicSelect("doc_select", "time_select");
 });
-
-//https://xhtml.ru/2020/null/dynamic-select-example/

@@ -1,3 +1,4 @@
+<? session_start();?>
 <?php
 require_once "api/connect.php";
 require_once "api/functions.php";
@@ -44,24 +45,49 @@ require_once "api/functions.php";
                 ?>
                 <label for="fullname" class="form_label">Имя<input type="text" id="fullname" name="fullname" class="inputs"></label>
                 <label for="phone" class="form_label">Телефон<input type="text" id="phone" name="phone" class="inputs"></label>
-                <label for="recording_date">
-                Дата
+                <label for="recording_date">Дата
                 <?
-                $date = new DateTime();
-                $date->add(new DateInterval('P14D'));
-                    echo "<input type='date' id='recording_date' name='recording_date' value='".date("Y-m-d")."' max='".$date->format('Y-m-d')."' min='".date("Y-m-d")."'> "
+                    $date = new DateTime();
+                    $date->add(new DateInterval('P14D'));
+                        echo "<input type='date' id='recording_date' name='recording_date' value='".date("Y-m-d")."' max='".$date->format('Y-m-d')."' min='".date("Y-m-d")."'> "
                 ?>
                 </label>       
-                <?getTime($conn) ?>        
+                <?getTime($conn)?>        
                 <input type="submit" value="Записаться" name="atr_btn" class="atr_btn">        
             </form>
+            <? 
+            if(isset($_SESSION['errorsData'])) {
+                echo '<h3 >'.$_SESSION['errorsData'].'</h3>';
+            }
+            if(isset($_SESSION['errorsRequest'])) {
+                echo '<h3 >'.$_SESSION['errorsRequest'].'</h3>';
+            }
+            if(isset($_SESSION['noErrors'])) {
+                echo '<h3 >'.$_SESSION['noErrors'].'</h3>';
+            }
+            ?>
             </div>
-            <!-- дОБАВИТЬ НА ТЕЛЕФОН МАСКУ ВВОДА!!!!!!!! -->
             <?showFooter();?>
         </div>
 </body>
 <script src="api/scropt.js"></script>
 </html>
 
-<!-- https://samozapis-spb.ru/specialnosti/stomatolog -->
-<!-- https://runebook.dev/ru/docs/html/element/input/time -->
+<?
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(isset($_POST['atr_btn'])) {
+            if(!isset($_SESSION['errors'])) {
+                $_SESSION['errorsData'] = "";
+                $_SESSION['errorsRequest'] = "";
+                $_SESSION['noErrors'] = "";
+            }
+            $doc_id = $_REQUEST['doc_select'];
+            $fullname = $_REQUEST['fullname'];
+            $phone = $_REQUEST['phone'];
+            $date = date('Y-m-d', strtotime($_REQUEST['recording_date']));
+            $time = $_REQUEST['time_select'];
+            sendingRequest($conn, $doc_id, $fullname, $phone, $date, $time);
+        }
+    }
+?>
